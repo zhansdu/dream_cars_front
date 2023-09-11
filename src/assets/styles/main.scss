@@ -1,0 +1,57 @@
+@use "./color_variables.scss" as v;
+
+$padding:5.5%;
+$border-radius:10px;
+
+@import './fonts.scss';
+@import './colors.scss';
+
+
+// fonts
+// Plus Jakarta Sans
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+#app{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.padding{
+  padding-left:$padding;
+  padding-right:$padding;
+}
+
+.transition{
+  transition: .3s;
+}
+
+.rounded-extra{
+  border-radius: $border-radius;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+input,
+button {
+    padding: 0.625em 1.25em;
+}
+
+input {
+    border: 0.125em solid v.$blue;
+    border-radius: 0.3125em;
+    caret-color: v.$blue;
+}
+
+input[type=text] {
+    min-width: 12.5em;
+}
+
+button {
+    border: none;
+    line-height: 1.3125em;
+    color: v.$white;
+    background-color: v.$blue;
+    border-radius: 0.3125em;
+}
