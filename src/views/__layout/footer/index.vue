@@ -1,5 +1,4 @@
 <template>
-  <!-- Footer -->
   <footer class="bg-white py-5">
     <div class="d-flex padding justify-content-between flex-grow-1">
       <!-- logo -->
@@ -49,7 +48,6 @@
       </div>
     </div>
   </footer>
-  <!-- Footer -->
 </template>
 
 <script>
