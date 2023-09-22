@@ -8,3 +8,11 @@ $sizes: 9, 10, 12, 14, 16, 18, 24, 32, 42, 48, 64;
     font-size: math.div($size, 16) + em;;
   }
 }
+
+$radiuses: 4,10,20,24;
+
+@each $size in $radiuses {
+  .border-radius-#{$size} {
+    border-radius: math.div($size, 16) + em;;
+  }
+}
