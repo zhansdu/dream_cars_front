@@ -43,6 +43,22 @@
   font-size: 4em;
 }
 
+.border-radius-4 {
+  border-radius: 0.25em;
+}
+
+.border-radius-10 {
+  border-radius: 0.625em;
+}
+
+.border-radius-20 {
+  border-radius: 1.25em;
+}
+
+.border-radius-24 {
+  border-radius: 1.5em;
+}
+
 .bg-darkgrey {
   background-color: var(--darkgrey) !important;
 }
@@ -373,6 +389,36 @@
   background-color: var(--darkblue) !important;
 }
 
+.bg-green {
+  background-color: var(--green) !important;
+}
+
+.text-green {
+  color: var(--green) !important;
+}
+
+.border-green {
+  border-color: var(--green) !important;
+}
+
+.outline-green {
+  color: var(--green) !important;
+  border-color: var(--green) !important;
+  background-color: var(--transparent);
+}
+.outline-green:hover:enabled {
+  background-color: var(--green) !important;
+  color: var(--white) !important;
+}
+
+.text-hover-green:hover:enabled {
+  color: var(--green) !important;
+}
+
+.bg-hover-green:hover:enabled {
+  background-color: var(--green) !important;
+}
+
 .bg-transparent {
   background-color: var(--transparent) !important;
 }
@@ -477,6 +523,14 @@ button {
   color: var(--white);
   background-color: var(--blue);
   border-radius: 0.3125em;
+}
+
+.bg-image {
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: contain;
 }
 
 /*# sourceMappingURL=main.css.map */

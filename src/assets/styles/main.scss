@@ -55,3 +55,11 @@ button {
     background-color: v.$blue;
     border-radius: 0.3125em;
 }
+
+.bg-image{
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: contain;
+}
