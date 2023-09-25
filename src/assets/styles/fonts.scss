@@ -1,7 +1,7 @@
 
 @use "sass:math";
 
-$sizes: 9, 10, 12, 14, 16, 18, 24, 32, 42, 48, 64;
+$sizes: 9, 10, 12, 14, 16, 18, 24, 32, 40, 42, 48, 64;
 
 @each $size in $sizes {
   .font-size-#{$size} {
@@ -9,7 +9,7 @@ $sizes: 9, 10, 12, 14, 16, 18, 24, 32, 42, 48, 64;
   }
 }
 
-$radiuses: 4,10,20,24;
+$radiuses: 4,10,15,20,24,28;
 
 @each $size in $radiuses {
   .border-radius-#{$size} {
