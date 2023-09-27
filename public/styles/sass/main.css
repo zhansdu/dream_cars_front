@@ -23,6 +23,10 @@
   font-size: 1.125em;
 }
 
+.font-size-20 {
+  font-size: 1.25em;
+}
+
 .font-size-24 {
   font-size: 1.5em;
 }
@@ -401,6 +405,36 @@
   background-color: var(--darkblue) !important;
 }
 
+.bg-green {
+  background-color: var(--green) !important;
+}
+
+.text-green {
+  color: var(--green) !important;
+}
+
+.border-green {
+  border-color: var(--green) !important;
+}
+
+.outline-green {
+  color: var(--green) !important;
+  border-color: var(--green) !important;
+  background-color: var(--transparent);
+}
+.outline-green:hover:enabled {
+  background-color: var(--green) !important;
+  color: var(--white) !important;
+}
+
+.text-hover-green:hover:enabled {
+  color: var(--green) !important;
+}
+
+.bg-hover-green:hover:enabled {
+  background-color: var(--green) !important;
+}
+
 .bg-transparent {
   background-color: var(--transparent) !important;
 }
@@ -465,17 +499,8 @@
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
-.padding {
-  padding-left: 5.5%;
-  padding-right: 5.5%;
-}
-
-.transition {
+* {
   transition: 0.3s;
-}
-
-.rounded-extra {
-  border-radius: 10px;
 }
 
 .text-ellipsis {
@@ -505,6 +530,69 @@ button {
   color: var(--white);
   background-color: var(--blue);
   border-radius: 0.3125em;
+}
+
+.bg-image {
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: contain;
+}
+
+@media screen and (min-width: 1900px) {
+  .padding {
+    padding-left: 12em;
+    padding-right: 12em;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .padding {
+    padding-left: 10em;
+    padding-right: 10em;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .padding {
+    padding-left: 7.5em;
+    padding-right: 7.5em;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .padding {
+    padding-left: 6em;
+    padding-right: 6em;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .padding {
+    padding-left: 5em;
+    padding-right: 5em;
+  }
+}
+@media screen and (max-width: 900px) {
+  .padding {
+    padding-left: 4em;
+    padding-right: 4em;
+  }
+}
+@media screen and (max-width: 700px) {
+  .padding {
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+}
+@media screen and (max-width: 500px) {
+  .padding {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+}
+@media screen and (max-width: 400px) {
+  .padding {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

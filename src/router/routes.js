@@ -1,6 +1,6 @@
 import Landing from "@/views/Landing";
-import Search from "@/views/Search";
-import CarInfo from "@/views/CarInfo";
+import Results from "@/views/Results";
+import FullInfo from "@/views/FullInfo";
 export default [
   {
     path: "/",
@@ -8,13 +8,13 @@ export default [
     component: Landing
   },
   {
-    path: "/search",
-    name: "search",
-    component: Search
+    path: "/results",
+    name: "results",
+    component: Results
   },
   {
-    path: "/car-info",
-    name: "car_info",
-    component: CarInfo
+    path: "/full_info",
+    name: "full_info",
+    component: FullInfo
   }
 ];
