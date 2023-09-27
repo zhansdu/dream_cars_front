@@ -3,13 +3,13 @@
     class="navbar navbar-expand-lg navbar-light bg-white border padding position-sticky top-0 py-3"
     style="z-index: 2"
   >
-    <div class="d-flex flex-fill justify-content-between">
+    <div class="d-flex flex-fill justify-content-between align-items-center">
       <!-- logo -->
       <router-link
         class="navbar-brand"
         :to="'/'"
       >
-        <div class="font-size-32">
+        <div class="font-size-32 text-uppercase">
           {{ $t('main_view.dream_cars') }}
         </div>
       </router-link>
@@ -45,14 +45,40 @@
 
       <!-- contacts buttons -->
       <div class="d-flex flex-column align-items-center">
-        <button class="py-3">
-          phone icon
-          <span class="ms-2">
-            {{ $t('main_view.call') }}
-          </span>
-        </button>
-        <div>
-          links
+        <div class="d-flex align-items-center">
+          <button class="d-flex align-items-center py-3">
+            <phone class="font-size-20" />
+            <span class="ms-2">
+              {{ $t('main_view.call') }}
+            </span>
+          </button>
+          <whatsapp
+            class="font-size-36 text-green mx-2"
+          />
+          <facebook
+            class="font-size-32 text-blue"
+          />
+        </div>
+
+        <div class="d-flex align-items-center mt-3">
+          <div class="d-flex align-items-center border-end pb-1 pe-2">
+            <location class="font-size-24 " />
+            <div class="ms-2">
+              Dropdown
+            </div>
+          </div>
+          <div class="d-flex align-items-center border-end pb-1 pe-2 mx-2">
+            <globe class="font-size-24 " />
+            <div class="ms-2">
+              Dropdown
+            </div>
+          </div>
+          <div class="d-flex align-items-center pb-1">
+            <dollar class="font-size-24 " />
+            <div class="ms-2">
+              Dropdown
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -61,6 +87,13 @@
 <script>
 import { defineComponent } from "vue";
 
+import phone from "@/assets/icons/phone";
+import whatsapp from "@/assets/icons/whatsapp";
+import facebook from "@/assets/icons/facebook";
+import location from "@/assets/icons/location";
+import globe from "@/assets/icons/globe";
+import dollar from "@/assets/icons/dollar";
+
 const links = [
   {
     name: "main_view.home",
@@ -68,7 +101,7 @@ const links = [
   },
   {
     name: "main_view.catalogue",
-    link: "/"
+    link: "/results"
   },
   {
     name: "main_view.services",
@@ -80,7 +113,15 @@ const links = [
   }
 ];
 export default defineComponent({
-  setup () {
+  components: {
+    phone,
+    whatsapp,
+    facebook,
+    location,
+    globe,
+    dollar
+  },
+  data () {
     return {
       links
     };

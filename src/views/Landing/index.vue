@@ -9,14 +9,14 @@
         >
           <div class="p-5 text-center text-xxl-left ">
             <div class="font-size-48 text-capitalize">
-              zagolovok v 2 stroki
+              {{ $t('landing.title') }}
             </div>
             <div class="font-size-20 mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              {{ $t('landing.title_description') }}
             </div>
             <div>
               <button class="bg-white text-blue">
-                Show more cars
+                {{ $t('landing.show_more') }}
               </button>
             </div>
           </div>
@@ -50,7 +50,7 @@
       <!-- car categories -->
       <div class="bg-white p-4 border-radius-10">
         <div class="text-bold">
-          Podobrat' avto po kategoriam
+          {{ $t('landing.car_by_category') }}
         </div>
         <div>
           <tabs
@@ -81,11 +81,11 @@
       <div class="d-flex flex-column my-5">
         <div class="d-flex justify-content-between align-items-center">
           <div class="font-size-40 fw-bold">
-            Novosti
+            {{ $t('landing.news') }}
           </div>
           <div>
             <button class="border border-blue outline-blue text-blue">
-              Posyrkat' vse
+              {{ $t('landing.see_all_news') }}
             </button>
           </div>
         </div>
