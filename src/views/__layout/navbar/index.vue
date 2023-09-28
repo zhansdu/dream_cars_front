@@ -63,9 +63,14 @@
         <div class="d-flex align-items-center mt-3">
           <div class="d-flex align-items-center border-end pb-1 pe-2">
             <location class="font-size-24 " />
-            <div class="ms-2">
-              Dropdown
-            </div>
+            <dropdown
+              class="ms-1"
+              :title="{
+                title:$i18n.locale.toUpperCase()
+              }"
+              :links="languages"
+              :linkOnClick="changeLang"
+            />
           </div>
           <div class="d-flex align-items-center border-end pb-1 pe-2 mx-2">
             <globe class="font-size-24 " />
@@ -94,6 +99,8 @@ import location from "@/assets/icons/location";
 import globe from "@/assets/icons/globe";
 import dollar from "@/assets/icons/dollar";
 
+import dropdown from "@/components/dropdown";
+
 const links = [
   {
     name: "main_view.home",
@@ -112,6 +119,19 @@ const links = [
     link: "/"
   }
 ];
+const languages = {
+  array: [
+    {
+      title: "en"
+    },
+    {
+      title: "ru"
+    },
+    {
+      title: "kz"
+    }
+  ]
+};
 export default defineComponent({
   components: {
     phone,
@@ -119,12 +139,20 @@ export default defineComponent({
     facebook,
     location,
     globe,
-    dollar
+    dollar,
+
+    dropdown
   },
   data () {
     return {
-      links
+      links,
+      languages
     };
+  },
+  methods: {
+    changeLang (lang) {
+      this.$i18n.locale = lang.title;
+    }
   }
 });
 </script>

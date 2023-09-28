@@ -3,10 +3,10 @@
     <div class="d-flex padding justify-content-between flex-grow-1">
       <!-- logo -->
       <div>
-        <div class="text-blue font-size-32">
+        <div class="text-blue font-size-32 text-uppercase">
           {{ $t('main_view.dream_cars') }}
         </div>
-        <div class="text-darkgrey ">
+        <div class="text-darkgrey max-width-300 mt-3">
           {{ $t("main_view.vision") }}
         </div>
       </div>
@@ -40,7 +40,7 @@
 
     <div class="py-5 pt-3 padding d-flex justify-content-between">
       <div>
-        {{ $t('main_view.all_rights') }}
+        {{ $t('main_view.all_rights',{year:new Date().getFullYear()}) }}
       </div>
       <div>
         link
@@ -70,51 +70,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .top-container-height{
-    /* 150px / 16 */
-    height: 9.375em;
-  }
-
-  .center-container-height{
-    /* 300px / 16 */
-    height: 18.75em;
-  }
-  .bottom-container-height{
-    /* 100px / 16 */
-    height: 6.25em;
-  }
-
-  .form_input{
-    position: relative;
-    /* 472px / 16 */
-    width:29.5em;
-    /* 50px / 16 */
-    height:3.125em;
-  }
-
-  .form_input>button{
-    position: absolute;
-    right:7px;
-    top:6px;
-  }
-
-  .icon_wrapper{
-    width: 2.5em;
-    height:2.5em;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .icon{
-    font-size:1.4em;
-  }
-  .icon_wrapper:hover{
-    transform:rotate(180deg);
-    background-color:#9E2629 !important
-  }
-  .icon_wrapper:hover > .icon{
-    transform:rotate(180deg);
-    font-size: 1.6em;
-    color:white;
-  }
-
+.max-width-300{
+  max-width: 18.75em;
+}
 </style>

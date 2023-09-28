@@ -29,7 +29,8 @@ module.exports = {
     // we use 2 spaces to indent our code
     indent: ["error", 2],
     // we want to avoid extraneous spaces
-    "no-multi-spaces": ["error"]
-    // "no-tabs": "false"
+    "no-multi-spaces": ["error"],
+    "no-tabs": 0,
+    "vue/attribute-hyphenation": 0
   }
 };

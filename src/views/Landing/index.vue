@@ -14,10 +14,14 @@
             <div class="font-size-20 mt-5">
               {{ $t('landing.title_description') }}
             </div>
-            <div>
-              <button class="bg-white text-blue">
+            <div class="mt-2">
+              <router-link
+                :to="{name:'results'}"
+                target="_blank"
+                class="btn bg-white text-blue px-4 py-2"
+              >
                 {{ $t('landing.show_more') }}
-              </button>
+              </router-link>
             </div>
           </div>
           <div class="ms-xxl-auto pe-5">
@@ -143,8 +147,5 @@ export default defineComponent({
   min-height: 18.75em;
   background-repeat: no-repeat;
   background-size: cover;
-}
-.max-width-200px{
-  max-width: min(40%,10em);
 }
 </style>

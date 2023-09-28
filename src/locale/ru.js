@@ -1,4 +1,7 @@
 export default {
+  en: "EN",
+  ru: "RU",
+  kz: "KZ",
   main_view: {
     dream_cars: "Dream car",
     home: "Главная",
