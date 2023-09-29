@@ -16,3 +16,7 @@ $radiuses: 4,10,15,20,24,28;
     border-radius: math.div($size, 16) + em;;
   }
 }
+
+.w-unset{
+  width:unset;
+}

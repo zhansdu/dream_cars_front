@@ -28,21 +28,24 @@ const PROP_KEYS = {
   ACTIVE_COLOR: "activeColor"
 };
 export default {
-  props: ["options"],
+  props: {
+    options: Object
+  },
+  emits: ["setIsActive"],
   data () {
     return {
       handle: {
-        diameter: 30, // optional
-        distance: 40, // optional
-        color: "#fff", // optional
+        diameter: 20, // optional
+        distance: 20, // optional
+        color: "lightgrey", // optional
         borderRadius: "50%" // optional
       },
       track: {
         color: "#ccc", // optional
-        width: 70, // optional
+        width: 55, // optional
         height: 30, // optional
         activeColor: "#2196F3", // optional
-        borderWidth: 0, // optional
+        borderWidth: 3, // optional
         borderRadius: "34px" // optional
       },
       isActive: true
@@ -134,6 +137,7 @@ export default {
         display: none;
     }
     .track {
+        padding: 5px;
         display: flex;
         align-items: center;
         position: absolute;
@@ -143,7 +147,8 @@ export default {
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: var(--track-color);
+        // background-color: var(--track-color);
+        background-color: transparent;
         cursor: pointer;
         border: var(--track-border-width) solid var(--track-color);
         border-radius: var(--track-border-radius);
@@ -158,13 +163,15 @@ export default {
         }
     }
     input:checked+.track {
-        background-color: var(--track-active-color);
+        // background-color: var(--track-active-color);
+        // background-color: transparent;
         border: var(--track-border-width) solid var(--track-active-color);
     }
     input:focus+.track {
         box-shadow: 0 0 1px var(--track-active-color);
     }
     input:checked+.track>.handle {
+        background-color: var(--track-active-color);
         transform: translateX(var(--handle-distance));
     }
 }

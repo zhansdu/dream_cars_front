@@ -36,7 +36,7 @@
         <router-link
           v-for="(link,index) in links"
           :key="index"
-          class="fw-normal text-decoration-none me-4 text-black "
+          class="cursor-pointer fw-normal text-decoration-none me-4 text-black "
           :to="link.link"
         >
           {{ $t(link.name) }}
@@ -46,7 +46,11 @@
       <!-- contacts buttons -->
       <div class="d-flex flex-column align-items-center">
         <div class="d-flex align-items-center">
-          <button class="d-flex align-items-center py-3">
+          <button
+            class="d-flex align-items-center py-3"
+            data-bs-toggle="modal"
+            data-bs-target="#contactMe"
+          >
             <phone class="font-size-20" />
             <span class="ms-2">
               {{ $t('main_view.call') }}
@@ -88,6 +92,19 @@
       </div>
     </div>
   </nav>
+  <div
+    id="contactMe"
+    class="modal fade"
+    tabindex="-1"
+    aria-labelledby="contactMe"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content w-unset">
+        <contact-me-modal />
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 import { defineComponent } from "vue";
@@ -101,6 +118,7 @@ import dollar from "@/assets/icons/dollar";
 
 import dropdown from "@/components/dropdown";
 
+import ContactMeModal from "./ContactMeModal.vue";
 const links = [
   {
     name: "main_view.home",
@@ -141,7 +159,9 @@ export default defineComponent({
     globe,
     dollar,
 
-    dropdown
+    dropdown,
+
+    ContactMeModal
   },
   data () {
     return {

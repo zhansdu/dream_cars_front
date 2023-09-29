@@ -11,10 +11,10 @@
             <div class="font-size-48 text-capitalize">
               {{ $t('landing.title') }}
             </div>
-            <div class="font-size-20 mt-5">
+            <div class="font-size-20 mt-3">
               {{ $t('landing.title_description') }}
             </div>
-            <div class="mt-2">
+            <div class="mt-4">
               <router-link
                 :to="{name:'results'}"
                 target="_blank"

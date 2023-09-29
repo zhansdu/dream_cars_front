@@ -18,7 +18,7 @@
         :key="index"
       >
         <div
-          class="dropdown-item"
+          class="dropdown-item cursor-pointer"
           @click="handleClick(link,index)"
         >
           {{ $t(link.title) }}

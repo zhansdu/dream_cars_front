@@ -79,6 +79,10 @@
   border-radius: 1.75em;
 }
 
+.w-unset {
+  width: unset;
+}
+
 .bg-darkgrey {
   background-color: var(--darkgrey) !important;
 }
@@ -504,13 +508,19 @@
 }
 
 * {
+  cursor: inherit;
+  /*firefox only scrollbar*/
+  scrollbar-color: #c5c5c5 white;
+  scrollbar-width: thin;
+  font-family: "SDU_Unique_Media", Verdana, sans-serif;
+}
+
+:not(body) {
   transition: 0.3s;
 }
 
-.text-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+*:focus {
+  outline: none !important;
 }
 
 input,
@@ -542,6 +552,16 @@ button {
   background-repeat: no-repeat;
   /* Do not repeat the image */
   background-size: contain;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1900px) {
