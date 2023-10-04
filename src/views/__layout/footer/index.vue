@@ -12,7 +12,7 @@
       </div>
 
       <!-- links -->
-      <div class="d-flex">
+      <div class="d-none d-md-flex">
         <div
           v-for="index in [1,2,3]"
           :key="index"
@@ -38,11 +38,11 @@
 
     <!-- all rights reserved -->
 
-    <div class="py-5 pt-3 padding d-flex justify-content-between">
+    <div class="py-5 pt-3 padding d-flex flex-wrap justify-content-between">
       <div>
         {{ $t('main_view.all_rights',{year:new Date().getFullYear()}) }}
       </div>
-      <div>
+      <div class="col-12 col-md-4 col-lg-3 d-flex justify-content-between mt-md-0 mt-3">
         link
         <span class="ms-4"> another link</span>
       </div>

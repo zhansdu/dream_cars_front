@@ -23,6 +23,7 @@ export default {
     title_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     show_more: "Show More",
     car_by_category: "Find a Car by Parameters",
-    news: "News"
+    news: "News",
+    see_all_news: "See all"
   }
 };

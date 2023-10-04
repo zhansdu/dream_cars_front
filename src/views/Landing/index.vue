@@ -4,10 +4,10 @@
       <!-- mashinka v nachale -->
       <div class="my-5">
         <div
-          class="bg-blue d-flex align-items-center flex-wrap justify-content-center border-radius-24 bg-image p-5 py-3 text-white"
+          class="bg-blue d-flex align-items-center flex-wrap border-radius-24 bg-image p-2 p-md-5 py-3 text-white"
           style="background-image: url('/images/circles.svg');"
         >
-          <div class="p-5 text-center text-xxl-left ">
+          <div class="p-2 p-lg-5 text-center text-xxl-left m-auto">
             <div class="font-size-48 text-capitalize">
               {{ $t('landing.title') }}
             </div>
@@ -24,8 +24,9 @@
               </router-link>
             </div>
           </div>
-          <div class="ms-xxl-auto pe-5">
+          <div class="m-auto">
             <img
+              class="w-100"
               src="/images/car.png"
               alt="A car"
             >
@@ -67,7 +68,7 @@
           <div
             v-for="index in [1,2,3,4,5,6]"
             :key="index"
-            class="bg-lightgrey d-flex flex-column align-items-center p-4 m-2"
+            class="bg-lightgrey d-flex flex-column align-items-center p-4 m-auto my-2 m-md-2"
           >
             <img
               src="/icons/car-estate.svg"
@@ -129,6 +130,38 @@ export default defineComponent({
       {
         title: "eshe Tabka",
         value: "tab2"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab3"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab4"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab5"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab6"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab7"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab8"
+      },
+      {
+        title: "eshe Tabka",
+        value: "tab9"
+      },
+      {
+        title: "eshe Tabka",
+        value: "ta0"
       }
       ],
       currentTab: "tab1"

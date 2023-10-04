@@ -23,6 +23,7 @@ export default {
     title_description: "Worem ipsum dolor sit amet, consectetur adipiscing elit.",
     show_more: "Показать больше",
     car_by_category: "Подобрать авто по параметрам",
-    news: "Новости"
+    news: "Новости",
+    see_all_news: "Показать все"
   }
 };

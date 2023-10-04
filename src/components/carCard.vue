@@ -18,24 +18,27 @@
         > -->
       </div>
     </div>
-    <div class="p-4 mt-5">
-      <img
-        class="w-100"
+    <div class="d-flex flex-column">
+      <div class="p-md-4 p-2 mt-5">
+        <img
+          class="w-100"
 
-        src="/images/car.png"
-      >
+          src="/images/car.png"
+        >
+      </div>
+      <div class="d-flex justify-content-around">
+        <div class="me-2">
+          <img src="/icons/gas-station.svg">  {{ car.fuel }}
+        </div>
+        <div class="me-2">
+          <img src="/icons/transmission.svg"> {{ car.steering }}
+        </div>
+        <div>
+          <img src="/icons/profile-2user.svg"> {{ car.capacity }}
+        </div>
+      </div>
     </div>
-    <div class="d-flex justify-content-around">
-      <div class="me-2">
-        <img src="/icons/gas-station.svg">  {{ car.fuel }}
-      </div>
-      <div class="me-2">
-        <img src="/icons/transmission.svg"> {{ car.steering }}
-      </div>
-      <div>
-        <img src="/icons/profile-2user.svg"> {{ car.capacity }}
-      </div>
-    </div>
+
     <div class="d-flex justify-content-between align-items-center mt-4">
       <div>
         <span class="font-size-20 fw-bold">

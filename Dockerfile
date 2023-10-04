@@ -3,6 +3,7 @@ FROM node:18-alpine3.16 as develop-stage
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install
+RUN yarn sass:compile@all
 COPY . .
 # build stage
 FROM develop-stage as build-stage

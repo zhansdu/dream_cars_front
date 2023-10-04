@@ -23,6 +23,7 @@ export default {
     title_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     show_more: "Көбірек көрсету",
     car_by_category: "Параметрлер бойынша авто табу",
-    news: "Жаңалықтар"
+    news: "Жаңалықтар",
+    see_all_news: "Бәрін көрсету"
   }
 };

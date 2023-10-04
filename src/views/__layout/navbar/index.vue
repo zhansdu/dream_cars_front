@@ -3,7 +3,7 @@
     class="navbar navbar-expand-lg navbar-light bg-white border padding position-sticky top-0 py-3"
     style="z-index: 2"
   >
-    <div class="d-flex flex-fill justify-content-between align-items-center">
+    <div class="d-flex flex-wrap flex-fill justify-content-between align-items-center flex-lg-nowrap">
       <!-- logo -->
       <router-link
         class="navbar-brand"
@@ -56,17 +56,25 @@
               {{ $t('main_view.call') }}
             </span>
           </button>
-          <whatsapp
-            class="font-size-36 text-green mx-2"
-          />
-          <facebook
-            class="font-size-32 text-blue"
-          />
+          <div class="d-none d-md-flex align-items-center">
+            <whatsapp
+              class="font-size-36 text-green mx-2"
+            />
+            <facebook
+              class="font-size-32 text-blue"
+            />
+          </div>
         </div>
 
-        <div class="d-flex align-items-center mt-3">
+        <div class="d-none d-md-flex align-items-center mt-3">
           <div class="d-flex align-items-center border-end pb-1 pe-2">
             <location class="font-size-24 " />
+            <div class="ms-2">
+              Locations
+            </div>
+          </div>
+          <div class="d-flex align-items-center border-end pb-1 pe-2 mx-2">
+            <globe class="font-size-24 " />
             <dropdown
               class="ms-1"
               :title="{
@@ -76,16 +84,10 @@
               :linkOnClick="changeLang"
             />
           </div>
-          <div class="d-flex align-items-center border-end pb-1 pe-2 mx-2">
-            <globe class="font-size-24 " />
-            <div class="ms-2">
-              Dropdown
-            </div>
-          </div>
           <div class="d-flex align-items-center pb-1">
             <dollar class="font-size-24 " />
             <div class="ms-2">
-              Dropdown
+              Currencies
             </div>
           </div>
         </div>
@@ -119,6 +121,9 @@ import dollar from "@/assets/icons/dollar";
 import dropdown from "@/components/dropdown";
 
 import ContactMeModal from "./ContactMeModal.vue";
+
+import { get } from "@/services/api/ApiService";
+
 const links = [
   {
     name: "main_view.home",
@@ -166,12 +171,21 @@ export default defineComponent({
   data () {
     return {
       links,
-      languages
+      languages,
+      exchange_rates: []
     };
+  },
+  created () {
+    this.getExchangeRates();
   },
   methods: {
     changeLang (lang) {
       this.$i18n.locale = lang.title;
+    },
+    getExchangeRates () {
+      get("/utils/exchangerates/").then(res => {
+        this.exchange_rates = res.data;
+      });
     }
   }
 });

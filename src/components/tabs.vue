@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="tabs default-tabs"
+    class="tabs default-tabs d-flex overflow-scroll"
     :class="wrapperClass"
   >
     <button

@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <div
-      :class="['dropdown-toggle',title.class]"
+      :class="['dropdown-toggle d-flex align-items-center',title.class]"
       type="button"
       data-bs-toggle="dropdown"
       aria-expanded="false"
@@ -51,3 +51,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+/* .dropdown-toggle::after{
+  margin-left: auto;
+  color: black;
+} */
+</style>

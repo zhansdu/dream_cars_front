@@ -1,7 +1,7 @@
 <template>
   <div class="padding">
-    <div class="d-flex justify-content-between my-5">
-      <div class="w-50 me-4">
+    <div class="d-flex flex-wrap justify-content-between my-5">
+      <div class="col-12 col-lg-6 pe-0 pe-lg-3">
         <Carousel
           id="gallery"
           v-model="currentSlide"
@@ -44,52 +44,66 @@
           </Slide>
         </Carousel>
       </div>
-      <div class="w-50 p-4 bg-white d-flex flex-column justify-content-between border-radius-10">
-        <div class="fw-bold font-size-40">
-          {{ car.title }}
-        </div>
-
-        <div class="mt-3">
-          {{ $t('full_info.description') }}
-        </div>
-        <div class="text-grey">
-          {{ car.description }}
-        </div>
-
-        <div class="d-flex mt-3">
-          <div class="flex-fill d-flex justify-content-between me-3">
-            <div class="text-grey">
-              <div>{{ $t('full_info.type') }}</div>
-              <div>{{ $t('full_info.steering') }}</div>
-            </div>
-            <div class="text-end">
-              <div>{{ car.type }}</div>
-              <div>{{ car.steering }}</div>
-            </div>
-          </div>
-          <div class="flex-fill d-flex justify-content-between ms-3">
-            <div class="text-grey">
-              <div>{{ $t('full_info.capacity') }}</div>
-              <div>{{ $t('full_info.fuel') }}</div>
-            </div>
-            <div class="text-end">
-              <div>{{ car.capacity }}</div>
-              <div>{{ car.fuel }}</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d-flex justify-content-between mt-3">
+      <div class="col-12 col-lg-6 ps-0 ps-lg-3 mt-3 mt-lg-0 d-flex">
+        <div class="p-4 bg-white d-flex flex-column justify-content-between border-radius-10">
           <div class="fw-bold font-size-40">
-            {{ car.price }}
+            {{ car.title }}
           </div>
-          <div class="d-flex">
-            <button class="me-2">
-              Che to
-            </button>
-            <button class="border outline-green">
-              Chet eshe
-            </button>
+
+          <div class="mt-3">
+            {{ $t('full_info.description') }}
+          </div>
+          <div class="text-grey">
+            {{ car.description }}
+          </div>
+
+          <div class="d-flex flex-wrap mt-3">
+            <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
+              <div class="text-grey">
+                <div>{{ $t('full_info.type') }}</div>
+              </div>
+              <div class="text-end">
+                <div>{{ car.type }}</div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
+              <div class="text-grey">
+                <div>{{ $t('full_info.capacity') }}</div>
+              </div>
+              <div class="text-end">
+                <div>{{ car.capacity }}</div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
+              <div class="text-grey">
+                <div>{{ $t('full_info.steering') }}</div>
+              </div>
+              <div class="text-end">
+                <div>{{ car.steering }}</div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
+              <div class="text-grey">
+                <div>{{ $t('full_info.fuel') }}</div>
+              </div>
+              <div class="text-end">
+                <div>{{ car.fuel }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <div class="fw-bold font-size-40">
+              {{ car.price }}
+            </div>
+            <div class="d-flex">
+              <button class="me-2">
+                Che to
+              </button>
+              <button class="border outline-green">
+                Chet eshe
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -152,7 +166,7 @@ export default {
         description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam assumenda ullam sapiente mollitia tenetur, nihil culpa nisi. Numquam, fugit consequuntur id expedita eos a, ipsam aut, iusto eaque odit voluptate.",
         type: "car",
         steering: "che",
-        capacity: "mnogo",
+        capacity: "fads fasd fsda famnogo",
         fuel: "tozhe mnnogo"
       }
     };
@@ -164,6 +178,11 @@ export default {
   }
 };
 </script>
+<style>
+.carousel__viewport{
+  border-radius: 10px;
+}
+</style>
 
 <style lang="scss" scoped>
 .bg-image{
