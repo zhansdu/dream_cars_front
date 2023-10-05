@@ -40,6 +40,11 @@
       <!-- /filter -->
 
       <!-- new cars -->
+      <div class="my-4">
+        <span class="font-size-40 fw-bold">
+          {{ $t('landing.new_cars') }}
+        </span>
+      </div>
       <div class="mb-5">
         <div class="row flex-wrap">
           <div
@@ -54,7 +59,7 @@
       <!-- /new cars -->
       <!-- car categories -->
       <div class="bg-white p-4 border-radius-10">
-        <div class="text-bold">
+        <div class="font-size-24 fw-bold mb-4">
           {{ $t('landing.car_by_category') }}
         </div>
         <div>

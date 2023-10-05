@@ -9,7 +9,7 @@
         class="navbar-brand"
         :to="'/'"
       >
-        <div class="font-size-32 text-uppercase">
+        <div class="font-size-32 text-uppercase cursor-pointer">
           {{ $t('main_view.dream_cars') }}
         </div>
       </router-link>
@@ -53,7 +53,7 @@
           >
             <phone class="font-size-20" />
             <span class="ms-2">
-              {{ $t('main_view.call') }}
+              {{ $t('call') }}
             </span>
           </button>
           <div class="d-none d-md-flex align-items-center">
@@ -81,7 +81,7 @@
                 title:$i18n.locale.toUpperCase()
               }"
               :links="languages"
-              :linkOnClick="changeLang"
+              :linkOnClick="changeLocale"
             />
           </div>
           <div class="d-flex align-items-center pb-1">
@@ -120,9 +120,10 @@ import dollar from "@/assets/icons/dollar";
 
 import dropdown from "@/components/dropdown";
 
-import ContactMeModal from "./ContactMeModal.vue";
+import ContactMeModal from "@/components/ContactMeModal.vue";
 
-import { get } from "@/services/api/ApiService";
+import { get } from "@/services/ApiService";
+import { setLocale } from "@/services/LocaleService";
 
 const links = [
   {
@@ -179,8 +180,8 @@ export default defineComponent({
     this.getExchangeRates();
   },
   methods: {
-    changeLang (lang) {
-      this.$i18n.locale = lang.title;
+    changeLocale (locale) {
+      setLocale(locale.title);
     },
     getExchangeRates () {
       get("/utils/exchangerates/").then(res => {

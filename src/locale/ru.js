@@ -6,13 +6,14 @@ export default {
   find_car: "Подобрать авто по параметрам",
   mileage: "Без пробега",
   find: "Найти",
+  call: "Свяжитесь с нами",
+  chat_with_manager: "Связаться с менеджером",
   main_view: {
     dream_cars: "Dream car",
     home: "Главная",
     catalogue: "Каталог",
     services: "Услуги",
     contacts: "Контакты",
-    call: "Свяжитесь с нами",
     vision: "Наша миссия - обеспечить удобство и помочь увеличить ваш бизнес по продажам.",
     all_rights: "©{year} DREAM CAR. Все права защищены",
     please_contact_us: "Заполните номер, чтобы наш менеджер связался с вами!",
@@ -24,6 +25,17 @@ export default {
     show_more: "Показать больше",
     car_by_category: "Подобрать авто по параметрам",
     news: "Новости",
-    see_all_news: "Показать все"
+    see_all_news: "Показать все",
+    new_cars: "Популярные новые модели"
+  },
+  full_info: {
+    description: "Описание",
+    type: "Тип",
+    capacity: "Вместимость",
+    steering: "Управление",
+    fuel: "Топливо",
+    last_cars: "Последние просмотренные",
+    view_all: "Посмотреть все",
+    recommendations: "Рекомендации"
   }
 };

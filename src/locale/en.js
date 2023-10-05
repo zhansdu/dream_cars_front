@@ -6,13 +6,14 @@ export default {
   find_car: "Find a Car by Parameters",
   mileage: "Zero Mileage",
   find: "Find",
+  call: "Contact us",
+  chat_with_manager: "Chat with manager",
   main_view: {
     dream_cars: "Dream car",
     home: "Home",
     catalogue: "Catalogue",
     services: "Services",
     contacts: "Contacts",
-    call: "Contact us",
     vision: "Our vision is to provide convenience and help increase your sales business.",
     all_rights: "©{year} DREAM CAR. All rights reserved",
     please_contact_us: "Please provide your number so our manager can contact you!",
@@ -24,6 +25,17 @@ export default {
     show_more: "Show More",
     car_by_category: "Find a Car by Parameters",
     news: "News",
-    see_all_news: "See all"
+    see_all_news: "See all",
+    new_cars: "Popular new models"
+  },
+  full_info: {
+    description: "Description",
+    type: "Type",
+    capacity: "Capacity",
+    steering: "Steering",
+    fuel: "Fuel",
+    last_cars: "Last viewed",
+    view_all: "View all",
+    recommendations: "Recommendations"
   }
 };

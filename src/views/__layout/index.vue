@@ -9,15 +9,20 @@
     <!-- footer -->
     <footer-view />
     <!-- /footer -->
+    <chat />
   </div>
 </template>
 <script>
-import NavbarView from "./navbar";
-import FooterView from "./footer";
+import NavbarView from "@/views/__layout/navbar";
+import FooterView from "@/views/__layout/footer";
+
+import chat from "@/components/chat.vue";
+
 export default {
   components: {
     "navbar-view": NavbarView,
-    "footer-view": FooterView
+    "footer-view": FooterView,
+    chat
   }
 };
 </script>

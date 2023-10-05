@@ -3,17 +3,20 @@
 </template>
 <script>
 import { defineComponent } from "vue";
-import MainView from "./views/__layout";
+import MainView from "@/views/__layout";
+
+import { setLocale } from "./services/LocaleService";
 
 export default defineComponent({
   components: {
     MainView
   },
   created () {
-    this.set_theme();
+    this.setTheme();
+    setLocale();
   },
   methods: {
-    set_theme () {
+    setTheme () {
       const id = "theme";
       const theme = "default";
       if (theme) {

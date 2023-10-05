@@ -186,8 +186,8 @@ import bars from "@/assets/icons/bars.vue";
 import search from "@/assets/icons/search.vue";
 
 import toggle from "@/components/toggle.vue";
+import Dropdown from "@/components/dropdown.vue";
 
-import Dropdown from "./dropdown.vue";
 export default {
   components: {
     bars,

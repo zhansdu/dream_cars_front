@@ -6,13 +6,14 @@ export default {
   find_car: "Параметрлер бойынша авто табу",
   mileage: "Жол бойынша қажеттіліктерсіз",
   find: "Табу",
+  call: "Бізге хабарлаңыз",
+  chat_with_manager: "Менеджерге хабарласу",
   main_view: {
     dream_cars: "Dream car",
     home: "Басты бет",
     catalogue: "Каталог",
     services: "Қызметтер",
     contacts: "Байланыстар",
-    call: "Бізге хабарлаңыз",
     vision: "Біздің миссиямыз - жол тарту және сату бизнестеріңізді көбейтуге көмек көрсету.",
     all_rights: "©{year} DREAM CAR. Барлық құқықтар қорғалған",
     please_contact_us: "Біздің менеджер сізбен хабарлану үшін нөміріңізді көрсетіңіз!",
@@ -24,6 +25,17 @@ export default {
     show_more: "Көбірек көрсету",
     car_by_category: "Параметрлер бойынша авто табу",
     news: "Жаңалықтар",
-    see_all_news: "Бәрін көрсету"
+    see_all_news: "Бәрін көрсету",
+    new_cars: "Популярлыққа ие жаңа модельдер"
+  },
+  full_info: {
+    description: "Сипаттама",
+    type: "Тип",
+    capacity: "Тасымалдау жаттығуы",
+    steering: "Басқару",
+    fuel: "Топты",
+    last_cars: "Соңғы қаралғандар",
+    view_all: "Барлығын қарау",
+    recommendations: "Ұсыныстар"
   }
 };

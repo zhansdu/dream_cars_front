@@ -32,14 +32,19 @@
             :key="slide"
           >
             <div
-              class="carousel__item bg-blue border-radius-10 mx-2 p-2"
-              @click="slideTo(slide - 1)"
+              class="carousel__item"
+              :class="{active:currentSlide==slide-1}"
             >
-              <img
-                class="w-100"
-                src="/images/car.png"
+              <div
+                class="bg-blue border-radius-10 mx-2 p-2"
+                @click="slideTo(slide - 1)"
               >
-              {{ slide }}
+                <img
+                  class="w-100"
+                  src="/images/car.png"
+                >
+                {{ slide }}
+              </div>
             </div>
           </Slide>
         </Carousel>
@@ -98,10 +103,15 @@
             </div>
             <div class="d-flex">
               <button class="me-2">
-                Che to
+                <phone class="font-size-20" />
+                <span class="ms-2">
+                  {{ $t('call') }}
+                </span>
               </button>
               <button class="border outline-green">
-                Chet eshe
+                <span class="font-size-28">
+                  <whatsapp />
+                </span>
               </button>
             </div>
           </div>
@@ -110,8 +120,15 @@
     </div>
     <!-- last cars -->
     <div class="d-flex justify-content-between align-items-center my-3">
-      <div>{{ $t('full_info.last_cars') }}</div>
-      <div>{{ $t('full_info.view_all') }}</div>
+      <div class="text-darkgrey font-size-20">
+        {{ $t('full_info.last_cars') }}
+      </div>
+      <router-link
+        :to="{name:'results'}"
+        class="text-blue text-decoration-none font-size-20"
+      >
+        {{ $t('full_info.view_all') }}
+      </router-link>
     </div>
     <div class="mb-5">
       <div class="row flex-wrap font-size-20">
@@ -128,8 +145,15 @@
 
     <!-- last cars -->
     <div class="d-flex justify-content-between align-items-center my-3">
-      <div>{{ $t('full_info.recommendations') }}</div>
-      <div>{{ $t('full_info.view_all') }}</div>
+      <div class="text-darkgrey font-size-20">
+        {{ $t('full_info.recommendations') }}
+      </div>
+      <router-link
+        :to="{name:'results'}"
+        class="text-blue text-decoration-none font-size-20"
+      >
+        {{ $t('full_info.view_all') }}
+      </router-link>
     </div>
     <div class="mb-5">
       <div class="row flex-wrap font-size-20">
@@ -152,11 +176,15 @@ import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide } from "vue3-carousel";
 import CarCard from "@/components/carCard.vue";
 
+import whatsapp from "@/assets/icons/whatsapp.vue";
+import phone from "@/assets/icons/phone.vue";
 export default {
   components: {
     CarCard,
     Carousel,
-    Slide
+    Slide,
+    whatsapp,
+    phone
   },
   data () {
     return {
@@ -189,10 +217,13 @@ export default {
   min-height: 40vh;
 }
 
-.active{
-  border-color:blue;
-  border-width:3px;
-  border-style: solid;
-  padding:10px
-}
+// .active{
+//   border-color:blue;
+//   border-width:3px;
+//   border-style: solid;
+//   border-radius: 10px;
+//   padding:5px;
+//   padding-top: 8px;
+//   padding-bottom: 8px;
+// }
 </style>
