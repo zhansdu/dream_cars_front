@@ -36,7 +36,11 @@ export default {
   created () {
     console.log(this.search_cars);
     if (this.search_cars.length <= 0) {
-      get("/cars", this.carParams).then(res => {
+      const params = JSON.parse(JSON.stringify(this.carParams));
+      if (this.$route.params.car_id) {
+        params.car_id = this.$route.params.car_id;
+      }
+      get("/cars", params).then(res => {
         if (res.data.results != null & res.data.results !== undefined) {
           store.commit("setSearchCars", res.data.results);
         } else {

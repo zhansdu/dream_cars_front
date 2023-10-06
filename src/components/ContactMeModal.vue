@@ -12,6 +12,7 @@
         class="w-100 font-size-18"
         type="tel"
         pattern="(\+7|8)[0-9]{10}"
+        placeholder="87777777777"
         required
       >
     </div>

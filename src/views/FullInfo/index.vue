@@ -150,12 +150,15 @@
     <!-- /last cars -->
 
     <!-- recommendations -->
-    <div class="d-flex justify-content-between align-items-center my-3">
+    <div
+      v-if="recommended_cars.length>0"
+      class="d-flex justify-content-between align-items-center my-3"
+    >
       <div class="text-darkgrey font-size-20">
         {{ $t('full_info.recommendations') }}
       </div>
       <router-link
-        :to="{name:'results'}"
+        :to="{name:'results',params:{car_id:car.id}}"
         class="text-blue text-decoration-none cursor-pointer font-size-20"
       >
         {{ $t('full_info.view_all') }}
@@ -164,12 +167,12 @@
     <div class="mb-5">
       <div class="row flex-wrap font-size-20">
         <div
-          v-for="(car,index) in recommended_cars"
+          v-for="(c,index) in recommended_cars"
           :key="index"
           class="col-12 col-md-6 col-lg-4"
         >
           <car-card
-            :car="car"
+            :car="c"
             class="m-2"
           />
         </div>
@@ -239,15 +242,16 @@ export default {
     ...mapGetters(["carParams"])
   },
   created () {
-    this.getCar();
-    this.getRecommendedCars();
+    this.getCar().then(() => {
+      this.getRecommendedCars();
+    });
   },
   methods: {
     slideTo (val) {
       this.currentSlide = val;
     },
     getCar () {
-      get("/cars/" + this.$route.params.id).then(res => {
+      return get("/cars/" + this.$route.params.id).then(res => {
         this.car = res.data;
       });
     },
@@ -255,7 +259,9 @@ export default {
       const params = JSON.parse(JSON.stringify(this.carParams));
       params.limit = 3;
       params.offset = 0;
-      get("/cars/recommend", params).then(res => {
+      params.car_id = this.car.id;
+      params.mileage = null;
+      return get("/cars/recommend", params).then(res => {
         this.recommended_cars = res.data.results;
       });
     }
