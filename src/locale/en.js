@@ -8,6 +8,11 @@ export default {
   find: "Find",
   call: "Contact us",
   chat_with_manager: "Chat with manager",
+  day: "day",
+  auto: "Auto",
+  manual: "Manual",
+  from: "From",
+  till: "Until",
   main_view: {
     dream_cars: "Dream car",
     home: "Home",
@@ -37,5 +42,16 @@ export default {
     last_cars: "Last viewed",
     view_all: "View all",
     recommendations: "Recommendations"
+  },
+  car: {
+    brand: "Brand",
+    model: "Model",
+    year: "Year of Manufacture",
+    price: "Price",
+    category: "Body Type",
+    fuel: "Fuel",
+    transmission_type: "Transmission",
+    color: "Body Color",
+    people: "People"
   }
 };

@@ -1,20 +1,27 @@
 <template>
   <div class="d-flex flex-wrap flex-md-nowrap">
     <div class="border-radius-15 me-4">
+      <div
+        v-if="event.image!=null"
+        class="bg-image"
+        :style="'background-image: url('+event.image+')'"
+      />
       <img
+        v-else
         src="/images/car_saloon.svg"
       >
     </div>
     <div class="d-flex flex-column  justify-content-between">
       <div class="font-size-32 fw-bold mt-2">
-        Title
+        {{ event.title }}
       </div>
       <div class="my-3">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci perspiciatis quibusdam facilis voluptatibus libero quos commodi, impedit voluptatem nisi cumque atque iusto, consectetur est autem aliquam aspernatur nulla possimus quia.
+        {{ $t('news[' + index +
+          '].description') }}
       </div>
       <div class="d-flex align-items-center">
-        <div class="text-lightblue me-3 mt-2">
-          date
+        <div class="text-darkgrey me-3 mt-2">
+          {{ new Date(event.created_at).toDateInputValue() }}
         </div>
         <div class="me-3 font-size-28">
           <whatsapp />
@@ -39,10 +46,17 @@ export default {
     facebook,
     whatsapp,
     mail
+  },
+  props: {
+    event: Object,
+    index: Number
   }
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.bg-image{
+  width:20vw;
+  height:17vw;
+}
 </style>

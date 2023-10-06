@@ -8,6 +8,11 @@ export default {
   find: "Табу",
   call: "Бізге хабарлаңыз",
   chat_with_manager: "Менеджерге хабарласу",
+  day: "күн",
+  auto: "Автомат",
+  manual: "Механика",
+  from: "Бастап",
+  till: "Дейін",
   main_view: {
     dream_cars: "Dream car",
     home: "Басты бет",
@@ -37,5 +42,17 @@ export default {
     last_cars: "Соңғы қаралғандар",
     view_all: "Барлығын қарау",
     recommendations: "Ұсыныстар"
+  },
+  car: {
+    brand: "Бренд",
+    model: "Модель",
+    year: "Шығу жылы",
+    price: "Баға",
+    category: "Кузов түрі",
+    fuel: "Топты",
+    transmission_type: "Коробка",
+    color: "Кузов түсі",
+    people: "Адам"
+
   }
 };

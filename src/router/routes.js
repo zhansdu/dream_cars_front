@@ -13,7 +13,7 @@ export default [
     component: Results
   },
   {
-    path: "/full_info",
+    path: "/full_info/:id",
     name: "full_info",
     component: FullInfo
   }

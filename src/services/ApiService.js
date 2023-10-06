@@ -4,5 +4,18 @@ const getLink = (link) => {
 };
 export const get = (link, params) => {
   link = getLink(link);
-  return axios.get(link, params);
+  let query = link;
+  if (params != null && params !== undefined) {
+    for (const param in params) {
+      if (params[param] != null && params[param] !== undefined) {
+        if (query === link) {
+          query = link + "?";
+        } else {
+          query += "&";
+        }
+        query += param + "=" + params[param];
+      }
+    }
+  }
+  return axios.get(query);
 };

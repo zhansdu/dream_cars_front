@@ -10,6 +10,11 @@ const messages = {
   kz
 };
 
+export const addLang = (lan, object) => {
+  const lang = messages[lan];
+  Object.assign(lang, object);
+};
+
 export default createI18n({
   fallbackLocale: "ru",
   messages,

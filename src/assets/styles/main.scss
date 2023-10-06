@@ -50,6 +50,11 @@ button {
     border-radius: 0.3125em;
 }
 
+.custom_select > select{
+  border:none;
+  background-color:transparent;
+}
+
 .bg-image{
   background-position: center;
   /* Center the image */
@@ -73,8 +78,8 @@ button {
 @mixin padding($padding) {
   // your SCSS here, e.g.
   .padding{
-    padding-left:$padding;
-    padding-right:$padding;
+    padding-left:$padding !important;
+    padding-right:$padding !important;
   }
 }
 

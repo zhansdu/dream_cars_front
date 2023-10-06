@@ -3,10 +3,10 @@
     <div class="d-flex justify-content-between">
       <div>
         <div class="font-size-20 fw-bold">
-          {{ car.brand }}
+          {{ car.brand.name + ' ' + car.name }}
         </div>
         <div class="font-size-14 text-grey mt-1">
-          {{ car.model }}
+          {{ car.category.name }}
         </div>
       </div>
       <div>
@@ -19,22 +19,33 @@
       </div>
     </div>
     <div class="d-flex flex-column">
-      <div class="p-md-4 p-2 mt-5">
+      <div
+        v-if="car.images?.length>0"
+        class="p-1 my-4"
+      >
+        <div
+          class="bg-image w-100 h-50"
+          :style="'background-image: url('+car.images[0]?.attachment+')'"
+        />
+      </div>
+      <div
+        v-else
+        class="p-md-4 p-2 mt-5"
+      >
         <img
           class="w-100"
-
           src="/images/car.png"
         >
       </div>
       <div class="d-flex justify-content-around">
         <div class="me-2">
-          <img src="/icons/gas-station.svg">  {{ car.fuel }}
+          <img src="/icons/gas-station.svg">  {{ car.tank_volume }} L
         </div>
         <div class="me-2">
-          <img src="/icons/transmission.svg"> {{ car.steering }}
+          <img src="/icons/transmission.svg"> {{ $t(car.transmission_type) }}
         </div>
         <div>
-          <img src="/icons/profile-2user.svg"> {{ car.capacity }}
+          <img src="/icons/profile-2user.svg"> {{ car.capacity + ' ' + $t('car.people') }}
         </div>
       </div>
     </div>
@@ -42,16 +53,14 @@
     <div class="d-flex justify-content-between align-items-center mt-4">
       <div>
         <span class="font-size-20 fw-bold">
-          ${{ car.price }}/
+          {{ getPrice(car.price) }}/
         </span>
-        <span class="font-size-14 text-darkgrey">
-          {{ car.duration }}
-        </span>
+        <span class="text-darkgrey font-size-14"> {{ $t('day') }}</span>
       </div>
       <div>
         <router-link
           class="btn bg-blue text-white px-4 py-2"
-          :to="{name:'full_info'}"
+          :to="{name:'full_info',params:{id:car.id}}"
         >
           {{ $t("rent") }}
         </router-link>
@@ -61,27 +70,43 @@
 </template>
 
 <script>
+import { getPrice } from "@/services/ExchangeRateService";
+import { mapGetters } from "vuex";
 export default {
   props: {
     car: {
       type: Object,
       default () {
         return {
-          brand: "Koenigsegg",
-          model: "Sport",
-          fuel: "80L",
-          steering: "Manual",
-          capacity: "2 people",
-          price: "80",
-          duration: "hour"
+          name: "Koenigsegg",
+          category: {
+            name: "Sport"
+          },
+          brand: {
+            name: ""
+          },
+          tank_volume: "80",
+          transmission_type: "Manual",
+          capacity: "2",
+          price: "80"
         };
       }
     }
+  },
+  data () {
+    return {
+      getPrice
+    };
+  },
+  computed: {
+    ...mapGetters(["currentCurrency"])
   }
 
 };
 </script>
 
 <style lang="scss" scoped>
-
+.bg-image{
+  height:4em;
+}
 </style>

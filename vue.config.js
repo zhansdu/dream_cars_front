@@ -1,6 +1,5 @@
 const { defineConfig } = require("@vue/cli-service");
 const path = require("path");
-const vueSrc = "./src";
 
 module.exports = defineConfig({
   pages: {
@@ -14,9 +13,19 @@ module.exports = defineConfig({
   configureWebpack: {
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, vueSrc)
+        "@": path.resolve(__dirname, "./src"),
+        "~": path.resolve(__dirname, "./nodemodules")
       },
       extensions: [".js", ".vue", ".json"]
     }
   }
+  // css: {
+  //   loaderOptions: {
+  //     sass: {
+  //       prependData: `
+  //         @import "@/scss/_variables.scss";
+  //       `
+  //     }
+  //   }
+  // }
 });

@@ -50,16 +50,18 @@
         </Carousel>
       </div>
       <div class="col-12 col-lg-6 ps-0 ps-lg-3 mt-3 mt-lg-0 d-flex">
-        <div class="p-4 bg-white d-flex flex-column justify-content-between border-radius-10">
+        <div class="p-4 bg-white d-flex flex-fill flex-column justify-content-between border-radius-10">
           <div class="fw-bold font-size-40">
-            {{ car.title }}
+            {{ car.brand.name + ' ' + car.name }}
           </div>
 
-          <div class="mt-3">
-            {{ $t('full_info.description') }}
-          </div>
-          <div class="text-grey">
-            {{ car.description }}
+          <div>
+            <div class="mt-3">
+              {{ $t('full_info.description') }}
+            </div>
+            <div class="mt-1 text-grey">
+              {{ car.description }}
+            </div>
           </div>
 
           <div class="d-flex flex-wrap mt-3">
@@ -68,7 +70,7 @@
                 <div>{{ $t('full_info.type') }}</div>
               </div>
               <div class="text-end">
-                <div>{{ car.type }}</div>
+                <div>{{ car.category.name }}</div>
               </div>
             </div>
             <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
@@ -84,7 +86,7 @@
                 <div>{{ $t('full_info.steering') }}</div>
               </div>
               <div class="text-end">
-                <div>{{ car.steering }}</div>
+                <div>{{ car.transmission_type }}</div>
               </div>
             </div>
             <div class="d-flex justify-content-between col-12 col-md-6 pe-4 my-2">
@@ -92,23 +94,27 @@
                 <div>{{ $t('full_info.fuel') }}</div>
               </div>
               <div class="text-end">
-                <div>{{ car.fuel }}</div>
+                <div>{{ car.tank_volume }}</div>
               </div>
             </div>
           </div>
 
           <div class="d-flex justify-content-between mt-3">
             <div class="fw-bold font-size-40">
-              {{ car.price }}
+              {{ getPrice(car.price) }}
             </div>
             <div class="d-flex">
-              <button class="me-2">
+              <button
+                class="me-2"
+                data-bs-toggle="modal"
+                data-bs-target="#contactMe"
+              >
                 <phone class="font-size-20" />
                 <span class="ms-2">
                   {{ $t('call') }}
                 </span>
               </button>
-              <button class="border outline-green">
+              <button class="border border-green outline-green">
                 <span class="font-size-28">
                   <whatsapp />
                 </span>
@@ -119,7 +125,7 @@
       </div>
     </div>
     <!-- last cars -->
-    <div class="d-flex justify-content-between align-items-center my-3">
+    <!-- <div class="d-flex justify-content-between align-items-center my-3">
       <div class="text-darkgrey font-size-20">
         {{ $t('full_info.last_cars') }}
       </div>
@@ -140,17 +146,17 @@
           <car-card class="m-2" />
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /last cars -->
 
-    <!-- last cars -->
+    <!-- recommendations -->
     <div class="d-flex justify-content-between align-items-center my-3">
       <div class="text-darkgrey font-size-20">
         {{ $t('full_info.recommendations') }}
       </div>
       <router-link
         :to="{name:'results'}"
-        class="text-blue text-decoration-none font-size-20"
+        class="text-blue text-decoration-none cursor-pointer font-size-20"
       >
         {{ $t('full_info.view_all') }}
       </router-link>
@@ -158,29 +164,52 @@
     <div class="mb-5">
       <div class="row flex-wrap font-size-20">
         <div
-          v-for="index in [1,2,3]"
+          v-for="(car,index) in recommended_cars"
           :key="index"
           class="col-12 col-md-6 col-lg-4"
         >
-          <car-card class="m-2" />
+          <car-card
+            :car="car"
+            class="m-2"
+          />
         </div>
       </div>
     </div>
-    <!-- /last cars -->
+    <!-- recommendations -->
+  </div>
+  <div
+    id="contactMe"
+    class="modal fade"
+    tabindex="-1"
+    aria-labelledby="contactMe"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content w-unset">
+        <contact-me-modal />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import "vue3-carousel/dist/carousel.css";
-
 import { Carousel, Slide } from "vue3-carousel";
+import { mapGetters } from "vuex";
+
 import CarCard from "@/components/carCard.vue";
+import ContactMeModal from "@/components/ContactMeModal.vue";
 
 import whatsapp from "@/assets/icons/whatsapp.vue";
 import phone from "@/assets/icons/phone.vue";
+
+import { get } from "@/services/ApiService";
+import { getPrice } from "@/services/ExchangeRateService";
+
 export default {
   components: {
     CarCard,
+    ContactMeModal,
     Carousel,
     Slide,
     whatsapp,
@@ -190,18 +219,45 @@ export default {
     return {
       currentSlide: 0,
       car: {
-        title: "Nissan GT",
-        description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam assumenda ullam sapiente mollitia tenetur, nihil culpa nisi. Numquam, fugit consequuntur id expedita eos a, ipsam aut, iusto eaque odit voluptate.",
-        type: "car",
-        steering: "che",
-        capacity: "fads fasd fsda famnogo",
-        fuel: "tozhe mnnogo"
-      }
+        name: "Koenigsegg",
+        category: {
+          name: "Sport"
+        },
+        brand: {
+          name: ""
+        },
+        tank_volume: "80",
+        transmission_type: "Manual",
+        capacity: "2",
+        price: "80"
+      },
+      getPrice,
+      recommended_cars: []
     };
+  },
+  computed: {
+    ...mapGetters(["carParams"])
+  },
+  created () {
+    this.getCar();
+    this.getRecommendedCars();
   },
   methods: {
     slideTo (val) {
       this.currentSlide = val;
+    },
+    getCar () {
+      get("/cars/" + this.$route.params.id).then(res => {
+        this.car = res.data;
+      });
+    },
+    getRecommendedCars () {
+      const params = JSON.parse(JSON.stringify(this.carParams));
+      params.limit = 3;
+      params.offset = 0;
+      get("/cars/recommend", params).then(res => {
+        this.recommended_cars = res.data.results;
+      });
     }
   }
 };

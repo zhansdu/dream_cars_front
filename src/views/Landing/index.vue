@@ -48,11 +48,14 @@
       <div class="mb-5">
         <div class="row flex-wrap">
           <div
-            v-for="index in [1,2,3,4,5,6,7,8]"
+            v-for="(car,index) in popular_cars"
             :key="index"
-            class="col-12 col-md-6 col-lg-4 col-xl-3"
+            class="d-flex col-12 col-md-6 col-lg-4 col-xl-3"
           >
-            <car-card class="m-2" />
+            <car-card
+              :car="car"
+              class="m-2"
+            />
           </div>
         </div>
       </div>
@@ -100,11 +103,14 @@
           </div>
         </div>
         <div
-          v-for="index in [1,2,3]"
+          v-for="(event,index) in news"
           :key="index"
           class="mt-4"
         >
-          <news-card />
+          <news-card
+            :event="event"
+            :index="index"
+          />
         </div>
       </div>
     </div>
@@ -118,6 +124,12 @@ import tabs from "@/components/tabs.vue";
 import newsCard from "@/components/newsCard.vue";
 import filter from "@/components/filterComponent.vue";
 
+import { mapGetters } from "vuex";
+
+import { get } from "@/services/ApiService";
+import store from "@/store";
+
+import { addLang } from "@/locale";
 export default defineComponent({
   components: {
     CarCard,
@@ -171,6 +183,42 @@ export default defineComponent({
       ],
       currentTab: "tab1"
     };
+  },
+  computed: {
+    ...mapGetters(["popular_cars", "carParams", "news"])
+  },
+  created () {
+    if (store.getters.popular_cars.length <= 0) {
+      get("/cars").then((res) => {
+        store.commit("setPopularCars", res.data);
+      });
+    }
+
+    get("/news").then((res) => {
+      const news = res.data;
+
+      // add dsecription translations
+      news.map(event => {
+        event.description_ru = event.description;
+        event.description_kz = event.description_kk;
+        delete event.description;
+        delete event.description_kk;
+        return event;
+      });
+      const newsT = { en: [], ru: [], kz: [] };
+      for (let i = 0; i < news.length; i++) {
+        const event = news[i];
+        for (const lang in newsT) {
+          newsT[lang].push({ description: event["description_" + lang] });
+        }
+      }
+      for (const lang in newsT) {
+        addLang(lang, { news: newsT[lang] });
+      }
+      // /add description translations
+
+      store.commit("setNews", news);
+    });
   },
   methods: {
     handleClick (newTab) {

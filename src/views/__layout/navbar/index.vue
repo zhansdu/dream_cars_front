@@ -86,9 +86,12 @@
           </div>
           <div class="d-flex align-items-center pb-1">
             <dollar class="font-size-24 " />
-            <div class="ms-2">
-              Currencies
-            </div>
+            <dropdown
+              class="ms-1"
+              :title="currentCurrency"
+              :links="currencies"
+              :linkOnClick="setExchangeRate"
+            />
           </div>
         </div>
       </div>
@@ -110,6 +113,7 @@
 </template>
 <script>
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 import phone from "@/assets/icons/phone";
 import whatsapp from "@/assets/icons/whatsapp";
@@ -124,6 +128,7 @@ import ContactMeModal from "@/components/ContactMeModal.vue";
 
 import { get } from "@/services/ApiService";
 import { setLocale } from "@/services/LocaleService";
+import { setExchangeRate } from "@/services/ExchangeRateService";
 
 const links = [
   {
@@ -156,6 +161,13 @@ const languages = {
     }
   ]
 };
+const currencies = {
+  array: [
+    {
+      title: "USD"
+    }
+  ]
+};
 export default defineComponent({
   components: {
     phone,
@@ -173,10 +185,15 @@ export default defineComponent({
     return {
       links,
       languages,
-      exchange_rates: []
+      currencies,
+      setExchangeRate
     };
   },
+  computed: {
+    ...mapGetters(["currentCurrency"])
+  },
   created () {
+    this.setExchangeRate();
     this.getExchangeRates();
   },
   methods: {
@@ -184,8 +201,14 @@ export default defineComponent({
       setLocale(locale.title);
     },
     getExchangeRates () {
-      get("/utils/exchangerates/").then(res => {
-        this.exchange_rates = res.data;
+      get("/utils/exchangerates").then(res => {
+        const exchangerates = res.data;
+        exchangerates.map(rate => {
+          rate.title = rate.currency;
+          delete rate.currency;
+          this.currencies.array.push(rate);
+          return rate;
+        });
       });
     }
   }

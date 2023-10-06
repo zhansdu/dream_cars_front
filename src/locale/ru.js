@@ -8,6 +8,11 @@ export default {
   find: "Найти",
   call: "Свяжитесь с нами",
   chat_with_manager: "Связаться с менеджером",
+  day: "день",
+  auto: "Автомат",
+  manual: "Механика",
+  from: "От",
+  till: "До",
   main_view: {
     dream_cars: "Dream car",
     home: "Главная",
@@ -37,5 +42,16 @@ export default {
     last_cars: "Последние просмотренные",
     view_all: "Посмотреть все",
     recommendations: "Рекомендации"
+  },
+  car: {
+    brand: "Марка",
+    model: "Модель",
+    year: "Год выпуска",
+    price: "Цена",
+    category: "Кузов",
+    fuel: "Топливо",
+    transmission_type: "Коробка",
+    color: "Цвет кузова",
+    people: "Человек"
   }
 };
